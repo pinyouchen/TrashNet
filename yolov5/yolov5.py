@@ -5,7 +5,7 @@ import imageio
 print("CUDA available:", torch.cuda.is_available())
 print("Number of GPUs available:", torch.cuda.device_count())
 
-# Step 3: 設定數據集和目錄結構
+# 設定資料集和目錄
 import os
 import shutil
 from sklearn.model_selection import train_test_split
@@ -15,7 +15,7 @@ from pathlib import Path
 data_dir = 'D:/exam/TrashNet'
 output_dir = 'D:/exam/TrashNet_yolo'
 
-# 創建 YOLOv5 資料夾結構
+# 創建 YOLOv5 資料夾
 os.makedirs(os.path.join(output_dir, 'images/train'), exist_ok=True)
 os.makedirs(os.path.join(output_dir, 'images/val'), exist_ok=True)
 os.makedirs(os.path.join(output_dir, 'images/test'), exist_ok=True)
@@ -70,12 +70,12 @@ def prepare_dataset():
 
 prepare_dataset()
 
-# Step 4: 訓練 YOLOv5 模型
+# 訓練 YOLOv5 模型
 import subprocess
 
 def train_yolov5():
     data_yaml_path = os.path.join(output_dir, 'data.yaml')
-    weights_path = 'yolov5s.pt'  # 假設 yolov5s.pt 位於當前目錄或已安裝到環境中
+    weights_path = 'yolov5s.pt'
     img_size = 640
     batch_size = 16
     epochs = 50
@@ -96,6 +96,6 @@ def train_yolov5():
     ])
 
 # 切換到 YOLOv5 目錄
-os.chdir('D:/exam/YOLOv5')  # 更改為你的 YOLOv5 目錄
+os.chdir('D:/exam/YOLOv5')
 
 train_yolov5()
